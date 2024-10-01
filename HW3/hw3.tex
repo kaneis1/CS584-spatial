@@ -1,0 +1,33 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{forest}
+\title{HW3}
+\author{ZONGQI CUI}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+    \subsection{}
+    original tree:\\
+        \begin{forest}
+            for tree={%
+            draw, % draw the tree
+            rounded corners, % rounded corners for nodes
+            edge={-}, % edge style
+            node options={align=center,anchor=north}, % center nodes
+            },
+            % Tree Structure
+            [{13,26, 67}
+                [{4, 7, 9}] % Child node contains 4, 7, 9
+                [{14, 15, 16}] % Child node contains 14, 15, 16
+                [{28, 41, 56}] % Child node contains 28, 41, 56
+                [{68, 72}] % Child node contains 68, 71, 92
+            ]
+        \end{forest}
+    insert 25:\\
+        \begin{itemize}
+            \item[1.]find the leaf node that 25 should be inserted into, which is the node with 26.
+        \end{itemize}
+
+\end{document}
