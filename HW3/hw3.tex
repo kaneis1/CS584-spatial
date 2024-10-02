@@ -8,26 +8,419 @@
 \maketitle
 
 \section{}
-    \subsection{}
-    original tree:\\
-        \begin{forest}
-            for tree={%
-            draw, % draw the tree
-            rounded corners, % rounded corners for nodes
-            edge={-}, % edge style
-            node options={align=center,anchor=north}, % center nodes
-            },
-            % Tree Structure
-            [{13,26, 67}
-                [{4, 7, 9}] % Child node contains 4, 7, 9
-                [{14, 15, 16}] % Child node contains 14, 15, 16
-                [{28, 41, 56}] % Child node contains 28, 41, 56
-                [{68, 72}] % Child node contains 68, 71, 92
-            ]
-        \end{forest}
-    insert 25:\\
-        \begin{itemize}
-            \item[1.]find the leaf node that 25 should be inserted into, which is the node with 26.
-        \end{itemize}
-
+    \begin{itemize}
+        \item[(a)]:
+        original tree:\\
+            \begin{forest}
+                for tree={%
+                draw, % draw the tree
+                rounded corners, % rounded corners for nodes
+                edge={-}, % edge style
+                node options={align=center,anchor=north}, % center nodes
+                },
+                % Tree Structure
+                [{13,26, 67}
+                    [{4, 7, 9}] 
+                    [{14, 15, 16}] 
+                    [{28, 41, 56}] 
+                    [{68, 72}] 
+                ]
+            \end{forest}\\
+        insert 25:\\
+            \begin{itemize}
+                \item[1.]find the leaf node that 25 should be inserted into.
+                \item[2.]insert 25 into the leaf node.\\
+                \par
+                \begin{forest}
+                    for tree={%
+                    draw, % draw the tree
+                    rounded corners, % rounded corners for nodes
+                    edge={-}, % edge style
+                    node options={align=center,anchor=north}, % center nodes
+                    },
+                    % Tree Structure
+                    [{13,26, 67}
+                        [{4, 7, 9}] 
+                        [{14, 15, 16, 25}]
+                        [{28, 41, 56}]
+                        [{68, 72}] 
+                    ]
+                \end{forest}\\ 
+                \item[3.]
+                    because m=2, adding 25 to the leaf node don't violate the B-tree property.\\  
+            \end{itemize}
+        insert 17:\\
+            \begin{itemize}
+                \item[1.]find the leaf node that 17 should be inserted into.
+                \item[2.]insert 17 into the leaf node.\\
+                \par
+                \begin{forest}
+                    for tree={%
+                    draw, % draw the tree
+                    rounded corners, % rounded corners for nodes
+                    edge={-}, % edge style
+                    node options={align=center,anchor=north}, % center nodes
+                    },
+                    % Tree Structure
+                    [{13,26, 67}
+                        [{4, 7, 9}] 
+                        [{14, 15, 16, 17, 25}*] 
+                        [{28, 41, 56}] 
+                        [{68, 72}] 
+                    ]
+                \end{forest}\\ 
+                \item[3.]
+                    because m=2, adding 17 to the leaf node violate the B-tree property.\\
+                \item[4.]
+                    find the mid number of the leaf node, which is 16.\\
+                    put 16 to the parent node, and split the leaf node into two nodes.\\
+                    \par
+                    \begin{forest}
+                        for tree={%
+                        draw, % draw the tree
+                        rounded corners, % rounded corners for nodes
+                        edge={-}, % edge style
+                        node options={align=center,anchor=north}, % center nodes
+                        },
+                        % Tree Structure
+                        [{13, 16, 26, 67}
+                            [{4, 7, 9}] 
+                            [{14, 15}] 
+                            [{17, 25}]
+                            [{28, 41, 56}] 
+                            [{68, 72}] 
+                        ]
+                    \end{forest}\\
+                \item[5.] parent node has 4 children, which don't violate the B-tree property.\\
+                  
+            \end{itemize}
+            insert 42:\\
+            \begin{itemize}
+                \item[1.]find the leaf node that 42 should be inserted into.
+                \item[2.]insert 42 into the leaf node.\\
+                \par
+                \begin{forest}
+                    for tree={%
+                    draw, % draw the tree
+                    rounded corners, % rounded corners for nodes
+                    edge={-}, % edge style
+                    node options={align=center,anchor=north}, % center nodes
+                    },
+                    % Tree Structure
+                    [{13, 16, 26, 67}
+                        [{4, 7, 9}] 
+                        [{14, 15}] 
+                        [{17, 25}]
+                        [{28, 41, 42, 56}] 
+                        [{68, 72}] 
+                    ]
+                \end{forest}\\ 
+                \item[3.]
+                    adding 42 to the leaf node don't violate the B-tree property.\\
+            \end{itemize}
+            insert 29:\\
+                    \begin{itemize}
+                        \item[1.]find the leaf node that 29 should be inserted into.
+                        \item[2.]insert 29 into the leaf node.\\
+                        \par
+                        \begin{forest}
+                            for tree={%
+                            draw, % draw the tree
+                            rounded corners, % rounded corners for nodes
+                            edge={-}, % edge style
+                            node options={align=center,anchor=north}, % center nodes
+                            },
+                            % Tree Structure
+                            [{13, 16, 26, 67}
+                                [{4, 7, 9}] 
+                                [{14, 15}] 
+                                [{17, 25}]
+                                [{28, 29, 41, 42, 56}*] 
+                                [{68, 72}] 
+                            ]
+                        \end{forest}\\ 
+                        \item[3.]
+                            adding 29 to the leaf node violate the B-tree property.\\
+                        \item[4.]
+                            find the mid number of the leaf node, which is 41.\\
+                            put 41 to the parent node, and split the leaf node into two nodes.\\
+                            \par
+                            \begin{forest}
+                                for tree={%
+                                draw, % draw the tree
+                                rounded corners, % rounded corners for nodes
+                                edge={-}, % edge style
+                                node options={align=center,anchor=north}, % center nodes
+                                },
+                                % Tree Structure
+                                [{13, 16, 26, 41, 67}
+                                    [{4, 7, 9}] 
+                                    [{14, 15}] 
+                                    [{17, 25}]
+                                    [{28, 29}]
+                                    [{42, 56}] 
+                                    [{68, 72}] 
+                                ]
+                            \end{forest}\\
+                        \item[5.] parent node has 5 children, which violate the B-tree property.\\
+                        \item[6.] find the mid number of the parent node, which is 26.\\
+                            put 26 to the grandparent node, and split the parent node into two nodes.\\
+                            \par
+                            \begin{forest}
+                                for tree={%
+                                draw, % draw the tree
+                                rounded corners, % rounded corners for nodes
+                                edge={-}, % edge style
+                                node options={align=center,anchor=north}, % center nodes
+                                },
+                                % Tree Structure
+                                [{26}
+                                    [{13, 16}
+                                        [{4, 7, 9}] 
+                                        [{14, 15}] 
+                                        [{17, 25}]
+                                    ]
+                                    [{41, 67}
+                                        [{28, 29}]
+                                        [{42, 56}] 
+                                        [{68, 72}] 
+                                    ]
+                                ]
+                            \end{forest}\\
+                       \end{itemize}     
+        \item[(b)]:    
+            original tree:\\
+            \begin{forest}
+                for tree={%
+                draw, % draw the tree
+                rounded corners, % rounded corners for nodes
+                edge={-}, % edge style
+                node options={align=center,anchor=north}, % center nodes
+                },
+                % Tree Structure
+                [{9}
+                    [
+                        {3,6}
+                        [{1,2}]
+                        [{4,5}]
+                        [{7,8}]
+                    ]
+                    [
+                        {13,16,21}
+                        [{10,11,12}]
+                        [{14,15}]
+                        [{17,18,19,20}]
+                        [{22,23}]
+                    ]
+                ]
+            \end{forest}\\      
+                delete 18:\\
+                    \begin{itemize}
+                        \item[1.]find the leaf node that 18 should be deleted from.
+                        \item[2.]delete 18 from the leaf node.\\
+                        \item[3.]check the number of the leaf node, which is not violating B-tree property.\\
+                        \begin{forest}
+                            for tree={%
+                            draw, % draw the tree
+                            rounded corners, % rounded corners for nodes
+                            edge={-}, % edge style
+                            node options={align=center,anchor=north}, % center nodes
+                            },
+                            % Tree Structure
+                            [{9}
+                                [
+                                    {3,6}
+                                    [{1,2}]
+                                    [{4,5}]
+                                    [{7,8}]
+                                ]
+                                [
+                                    {13,16,21}
+                                    [{10,11,12}]
+                                    [{14,15}]
+                                    [{17,19,20}]
+                                    [{22,23}]
+                                ]
+                            ]
+                        \end{forest}\\  
+                    \end{itemize}
+                delete 14:\\
+                    \begin{itemize}
+                        \item[1.]find the leaf node that 14 should be deleted from which is a leaf node.
+                        \item[2.]delete 14 from the leaf node.\\
+                        \item[3.]check the number of the leaf node, which is violating B-tree property.\\
+                        \begin{forest}
+                            for tree={%
+                            draw, % draw the tree
+                            rounded corners, % rounded corners for nodes
+                            edge={-}, % edge style
+                            node options={align=center,anchor=north}, % center nodes
+                            },
+                            % Tree Structure
+                            [{9}
+                                [
+                                    {3,6}
+                                    [{1,2}]
+                                    [{4,5}]
+                                    [{7,8}]
+                                ]
+                                [
+                                    {13,16,21}
+                                    [{10,11,12}]
+                                    [{15}*]
+                                    [{17,19,20}]
+                                    [{22,23}]
+                                ]
+                            ]
+                        \end{forest}\\  
+                        \item[4.]current node's rightsibling has 3 numbers, which is more than m. rightsibling can let closest 17 be their joint father and previous father 16 come to the current node.\\
+                        \begin{forest}
+                            for tree={%
+                            draw, % draw the tree
+                            rounded corners, % rounded corners for nodes
+                            edge={-}, % edge style
+                            node options={align=center,anchor=north}, % center nodes
+                            },
+                            % Tree Structure
+                            [{9}
+                                [
+                                    {3,6}
+                                    [{1,2}]
+                                    [{4,5}]
+                                    [{7,8}]
+                                ]
+                                [
+                                    {13,17,21}
+                                    [{10,11,12}]
+                                    [{15,16}]
+                                    [{19,20}]
+                                    [{22,23}]
+                                ]
+                            ]
+                        \end{forest}\\
+                    \end{itemize}
+                 delete 21:
+                    \begin{itemize}
+                        \item[1.]find the leaf node that 21 should be deleted from which is a directory node.
+                        \item[2.]switch 21 with the closest number in the leaf node which is 22\\
+                        \item[3.]delete 21 from the leaf node.\\
+                        \begin{forest}
+                            for tree={%
+                            draw, % draw the tree
+                            rounded corners, % rounded corners for nodes
+                            edge={-}, % edge style
+                            node options={align=center,anchor=north}, % center nodes
+                            },
+                            % Tree Structure
+                            [{9}
+                                [
+                                    {3,6}
+                                    [{1,2}]
+                                    [{4,5}]
+                                    [{7,8}]
+                                ]
+                                [
+                                    {13,17,22}
+                                    [{10,11,12}]
+                                    [{15,16}]
+                                    [{19,20}]
+                                    [{23}*]
+                                ]
+                            ]
+                        \end{forest}\\  
+                        \item[4.]check the number of the current node, which is violating B-tree property. Since there is no rightsibling we can find leftsibling and find that leftsibling only have 2 numbers. We collapse currentNode and leftsibling and then build new node contaning all keys links to the parent node.\\
+                        \begin{forest}
+                            for tree={%
+                            draw, % draw the tree
+                            rounded corners, % rounded corners for nodes
+                            edge={-}, % edge style
+                            node options={align=center,anchor=north}, % center nodes
+                            },
+                            % Tree Structure
+                            [{9}
+                                [
+                                    {3,6}
+                                    [{1,2}]
+                                    [{4,5}]
+                                    [{7,8}]
+                                ]
+                                [
+                                    {13,17}
+                                    [{10,11,12}]
+                                    [{15,16}]
+                                    [{19,20,22,23}]
+                                ]
+                            ]
+                        \end{forest}\\
+                    \end{itemize}
+            delete 1:
+                \begin{itemize}
+                    \item[1.]find the leaf node that 1 should be deleted from which is a leaf node.
+                    \item[2.]delete 1 from the leaf node.\\
+                    \begin{forest}
+                        for tree={%
+                        draw, % draw the tree
+                        rounded corners, % rounded corners for nodes
+                        edge={-}, % edge style
+                        node options={align=center,anchor=north}, % center nodes
+                        },
+                        % Tree Structure
+                        [{9}
+                            [
+                                {3,6}
+                                [{2}*]
+                                [{4,5}]
+                                [{7,8}]
+                            ]
+                            [
+                                {13,17}
+                                [{10,11,12}]
+                                [{15,16}]
+                                [{19,20,22,23}]
+                            ]
+                        ]
+                    \end{forest}\\  
+                    \item[3.]check the number of the current node, which is violating B-tree property. We can find rightsibling that leftsibling only have 2 keys. We collapse currentNode and rightsibling and then build new node contaning all keys links to the parent node.\\
+                    \begin{forest}
+                        for tree={%
+                        draw, % draw the tree
+                        rounded corners, % rounded corners for nodes
+                        edge={-}, % edge style
+                        node options={align=center,anchor=north}, % center nodes
+                        },
+                        % Tree Structure
+                        [{9}
+                            [
+                                {6}*
+                                [{2,3,4,5}]
+                                [{7,8}]
+                            ]
+                            [
+                                {13,17}
+                                [{10,11,12}]
+                                [{15,16}]
+                                [{19,20,22,23}]
+                            ]
+                        ]
+                    \end{forest}\\
+                    \item[4.]check parent node and find that it don't meet B-tree requirements. We find that parent node's rightsibling only have 2 keys so we collapse them and build a new node\\
+                    \begin{forest}
+                        for tree={%
+                        draw, % draw the tree
+                        rounded corners, % rounded corners for nodes
+                        edge={-}, % edge style
+                        node options={align=center,anchor=north}, % center nodes
+                        },
+                        % Tree Structure
+                        [{6,9,13,17}
+                            [{2,3,4,5}]
+                            [{7,8}]
+                            [{10,11,12}]
+                            [{15,16}]
+                            [{19,20,22,23}] 
+                        ]
+                    \end{forest}\\
+                \end{itemize}
+           
+    \end{itemize}
 \end{document}

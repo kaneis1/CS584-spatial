@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1727742605.80234 "d:/code/latex/CS584-spatial/HW3/hw3.tex" "hw3.pdf" "hw3" 1727742607.06785 0
+["pdflatex"] 1727831347.60028 "d:/code/latex/CS584-spatial/HW3/hw3.tex" "hw3.pdf" "hw3" 1727831350.35131 0
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1722017695 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1722006200 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1722006200 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -116,9 +116,9 @@
   "c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1722048347 5529061 543042243f35af3474d78b11ac263772 ""
   "c:/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1722048645 8239251 c252251dc8400abadd17292142bf18f8 ""
   "c:/texlive/2024/texmf.cnf" 1722048312 713 e69b156964470283e0530f5060668171 ""
-  "d:/code/latex/CS584-spatial/HW3/hw3.tex" 1727742605 979 8ae9aed881c0539f7532e00f909bc69c ""
-  "hw3.aux" 1727742606 213 362532bf1eb78b36ce48e53ea608a9d5 "pdflatex"
-  "hw3.tex" 1727742605 979 8ae9aed881c0539f7532e00f909bc69c ""
+  "d:/code/latex/CS584-spatial/HW3/hw3.tex" 1727831346 19663 0c534f8efc3ecdcafb9d3cd34e3f7b12 ""
+  "hw3.aux" 1727831350 120 c53a5017a9fded8046ce31717ca3455b "pdflatex"
+  "hw3.tex" 1727831346 19663 0c534f8efc3ecdcafb9d3cd34e3f7b12 ""
   (generated)
   "hw3.aux"
   "hw3.log"
